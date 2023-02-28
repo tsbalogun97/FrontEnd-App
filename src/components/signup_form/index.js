@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { signUp } from '../../utilities/user-functions';
 
 const SignUp = ({ setNewUser }) => {
   const [formData, setFormData] = useState({
@@ -20,8 +21,7 @@ const SignUp = ({ setNewUser }) => {
     if (password !== password2) {
       console.log('Passwords do not match');
     } else {
-      console.log('Success');
-      console.log(formData)
+      signUp(formData);
     }
   };
 
@@ -72,7 +72,7 @@ const SignUp = ({ setNewUser }) => {
           onChange={(e) => onChange(e)}
           minLength='6'
         />
-        <button type='submit'>Sign In</button>
+        <button type='submit'>Sign Up</button>
       </form>
       <p>
         Already have an account? <button onClick={handleClick}>Sign In</button>
