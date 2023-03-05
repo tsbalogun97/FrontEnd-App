@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { login } from '../../utilities/user-functions';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/auth';
 
-const LoginhtmlForm = ({ setNewUser }) => {
+const LoginForm = ({ setNewUser }) => {
+  const nav = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -13,9 +16,9 @@ const LoginhtmlForm = ({ setNewUser }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    await login(formData);
     console.log('Success');
-    let res = await login(formData);
-    console.log(res)
+    nav('/dashboard');
   };
 
   const onChange = (e) => {
@@ -54,4 +57,4 @@ const LoginhtmlForm = ({ setNewUser }) => {
   );
 };
 
-export default LoginhtmlForm;
+export default LoginForm;

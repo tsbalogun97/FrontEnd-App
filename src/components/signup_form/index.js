@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { signUp } from '../../utilities/user-functions';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/auth';
 
 const SignUp = ({ setNewUser }) => {
+  const nav = useNavigate();
+  const { signUp } = useAuth();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,7 +24,8 @@ const SignUp = ({ setNewUser }) => {
     if (password !== password2) {
       console.log('Passwords do not match');
     } else {
-      signUp(formData);
+      await signUp(formData);
+      nav('/dashboard');
     }
   };
 

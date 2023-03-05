@@ -1,11 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { useAuth } from '../../hooks/auth';
 
-const dashboard = () => {
+const Dashboard = () => {
+  const { logout } = useAuth();
+
+  const handleClick = () => {
+    logout();
+  };
+
   return (
     <div>
-        <h1>Only Users Should See This Page</h1>
+      <h1>You are logged in so can see this</h1>
+      <button onClick={handleClick}>LogOut</button>
     </div>
-  )
-}
+  );
+};
 
-export default dashboard
+export default Dashboard;
