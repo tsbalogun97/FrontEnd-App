@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import AuthPage from './pages/auth';
 import Dashboard from './pages/dashboard';
 import Navbar from './components/navbar';
-import { ProtectedRoutes } from './components/protectedRoutes/index';
 
 function App() {
   return (
@@ -12,9 +11,7 @@ function App() {
       <h1>My App</h1>
       <Routes>
         <Route path='/auth' element={<AuthPage />} />
-        <Route element={<ProtectedRoutes />}>
-          <Route path='/dashboard' element={<Dashboard />} />
-        </Route>
+        <Route path='/dashboard' element={<Dashboard />} />
       </Routes>
     </div>
   );
